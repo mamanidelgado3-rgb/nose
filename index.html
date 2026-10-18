@@ -1,57 +1,469 @@
+
 <!DOCTYPE html>
-<!-- saved from url=(0032)http://127.0.0.1:5500/index.html -->
-<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#09051c">
   <title>Mi universo eres tú ❤️</title>
+
   <style>
-    *{margin:0;padding:0;box-sizing:border-box}
-    :root{--rosa:#ff9ed8;--morado:#bda1ff;--blanco:#fff6ff}
-    body{min-height:100vh;overflow-x:hidden;color:var(--blanco);font-family:Georgia,"Times New Roman",serif;background:radial-gradient(ellipse at 50% 45%,#291052 0%,#100822 38%,#05030e 78%)}
-    #stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
-    .nebula{position:fixed;width:340px;height:340px;border-radius:50%;filter:blur(100px);opacity:.23;pointer-events:none;z-index:0;background:#a32bff;animation:nebula 9s ease-in-out infinite alternate}
-    .nebula.one{top:5%;left:-150px}.nebula.two{right:-150px;bottom:5%;background:#ff4fa8;animation-delay:-4s}
-    @keyframes nebula{to{transform:translate(40px,35px) scale(1.2)}}
-    header{position:relative;z-index:2;text-align:center;padding:42px 18px 10px}
-    .eyebrow{color:var(--rosa);text-transform:uppercase;letter-spacing:5px;font:11px Arial,sans-serif;margin-bottom:17px}
-    h1{font-size:clamp(35px,7vw,70px);font-weight:normal;line-height:1.12;text-shadow:0 0 25px #d45bff80}
-    h1 span{color:var(--rosa);font-style:italic}
-    .subtitle{margin:18px auto 0;color:#d5c5ed;line-height:1.8;max-width:520px;font-size:15px}
-    .music-button{position:relative;z-index:5;display:block;margin:22px auto 8px;border:1px solid #e7a7ff88;color:white;background:#a64bd52c;border-radius:50px;padding:13px 23px;cursor:pointer;font:13px Arial,sans-serif;letter-spacing:1px;transition:.3s}
-    .music-button:hover{background:#a64bd566;box-shadow:0 0 24px #c56cff55;transform:scale(1.04)}
-    .music-note{text-align:center;color:#b6a2d0;font:11px Arial,sans-serif;margin-bottom:12px}
-    .universe{position:relative;width:min(100%,1050px);height:650px;margin:0 auto;z-index:1}
-    .orbit{position:absolute;top:50%;left:50%;border:1px solid #d8b4ff20;border-radius:50%;transform:translate(-50%,-50%);pointer-events:none}
-    .orbit.one{width:390px;height:390px}.orbit.two{width:560px;height:560px}.orbit.three{width:740px;height:740px;border-style:dashed;opacity:.5}
-    .galaxy{position:absolute;left:50%;top:50%;width:300px;height:300px;transform:translate(-50%,-50%);border-radius:50%;display:flex;align-items:center;justify-content:center;text-align:center;background:radial-gradient(circle at 50% 50%,#fff9c9 0 2%,#ffe77a 3%,#c7a62c 5%,#5c421b 9%,transparent 13%),repeating-conic-gradient(from 8deg at 50% 50%,#f8db5b00 0deg,#ffe66d55 8deg,#fff1a5aa 13deg,#8f6b1f55 19deg,#e5bc4a00 28deg),radial-gradient(ellipse at center,#fff4a9 0%,#cda63a 8%,#6c4d22 22%,#1b1423 45%,transparent 70%);box-shadow:0 0 22px #ffe76b66,0 0 65px #e4b63a45,0 0 120px #b47cff25;animation:galaxyPulse 5s ease-in-out infinite;isolation:isolate}
-    .galaxy::before{content:"";position:absolute;inset:-8%;border-radius:50%;background:repeating-conic-gradient(from 0deg,#ffd95a00 0deg,#ffd95a22 4deg,#fff4b288 7deg,#7d5b1d66 11deg,#ffd95a00 17deg);filter:blur(2px);mask-image:radial-gradient(ellipse,transparent 0 14%,#000 18% 48%,transparent 69%);transform:rotate(-18deg) scaleY(.48);animation:spinGalaxy 32s linear infinite;z-index:-1}
-    .galaxy::after{content:"";position:absolute;inset:10%;border-radius:50%;background:radial-gradient(ellipse at 48% 50%,#fff8c7 0 2%,#ffdf66 3%,#a77b29 7%,#21172a 16%,transparent 32%);box-shadow:0 0 18px #ffdc5d;transform:rotate(-18deg) scaleY(.58)}
-    .galaxy-content{position:relative;z-index:2;text-shadow:0 2px 12px #1b092d;background:#130b20b8;border:1px solid #ffe69b55;border-radius:50%;width:120px;height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;backdrop-filter:blur(2px)}
-    .galaxy .heart{font-size:25px;filter:drop-shadow(0 0 12px #ff8ad8)}
-    .galaxy h2{font-size:14px;font-weight:normal;margin:6px 0}.galaxy p{font:7px Arial,sans-serif;letter-spacing:1px;color:#f2d9ff}
-    @keyframes spinGalaxy{to{transform:rotate(342deg) scaleY(.48)}}
-    @keyframes galaxyPulse{50%{filter:brightness(1.2);box-shadow:0 0 35px #ffe76b88,0 0 95px #e4b63a65,0 0 130px #b47cff35}}
-    .photo{position:absolute;width:148px;padding:7px 7px 12px;background:#fff8ff;border-radius:3px;color:#32203a;box-shadow:0 5px 28px #0008,0 0 18px #dc8cff18;cursor:pointer;transition:transform .35s,box-shadow .35s;animation:float 5s ease-in-out infinite;z-index:3}
-    .photo:hover{z-index:10;transform:scale(1.1) rotate(0deg)!important;box-shadow:0 0 35px #edb5ff70}
-    .photo img{display:block;width:100%;aspect-ratio:4/4.6;object-fit:cover;background:linear-gradient(135deg,#3b175c,#c17acb)}
-    .photo .caption{padding:9px 3px 1px;text-align:center}.photo h3{font-size:14px;font-weight:normal;margin-bottom:5px}.photo p{font-size:10px;line-height:1.5;color:#765c7c}
-    @keyframes float{0%,100%{margin-top:0}50%{margin-top:-10px}}
-    .p1{left:5%;top:8%;transform:rotate(-9deg)}.p2{right:5%;top:7%;transform:rotate(8deg);animation-delay:-1s}
-    .p3{left:1%;top:40%;transform:rotate(6deg);animation-delay:-2s}.p4{right:1%;top:40%;transform:rotate(-7deg);animation-delay:-3s}
-    .p5{left:13%;bottom:4%;transform:rotate(-7deg);animation-delay:-1.5s}.p6{right:13%;bottom:4%;transform:rotate(7deg);animation-delay:-2.5s}
-    .p7{left:36%;top:0%;transform:rotate(5deg);animation-delay:-3.5s}.p8{left:36%;bottom:1%;transform:rotate(-4deg);animation-delay:-.5s}
-    .modal{position:fixed;inset:0;z-index:20;display:none;align-items:center;justify-content:center;padding:20px;background:#080312ed;backdrop-filter:blur(12px)}
-    .modal.open{display:flex}.modal-inner{width:min(420px,100%);text-align:center;animation:appear .3s ease}
-    .modal img{max-height:65vh;max-width:100%;border:5px solid #fff6ff;box-shadow:0 0 45px #bb70ff55;object-fit:contain}
-    .modal h2{color:var(--rosa);font-weight:normal;margin:18px 0 8px}.modal p{line-height:1.7;color:#e6d8f5}
-    .close{position:absolute;top:20px;right:24px;border:0;background:none;color:white;font-size:35px;cursor:pointer}
-    @keyframes appear{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
-    .letter{position:relative;z-index:2;width:min(650px,calc(100% - 32px));margin:30px auto 70px;padding:30px 25px;text-align:center;border:1px solid #d7a6ff35;border-radius:18px;background:#170c2c88;box-shadow:0 0 50px #8e3bca12}
-    .letter h2{color:var(--rosa);font-size:26px;font-weight:normal;margin-bottom:17px}.letter p{color:#e5d8f2;line-height:1.95;font-size:15px}
-    .signature{display:block;margin-top:23px;color:var(--rosa);font-style:italic;font-size:20px}
-    footer{position:relative;z-index:2;padding:20px;text-align:center;color:#9984b6;font-size:12px}
-    .youtube-player{position:fixed;width:190px;height:107px;right:12px;bottom:12px;z-index:15;border:1px solid #e7a7ff88;border-radius:10px;background:#09051c;box-shadow:0 0 24px #b557ff45;opacity:.92}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --rosa: #ff9ed8;
+      --morado: #bda1ff;
+      --blanco: #fff6ff;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--blanco);
+      font-family: Georgia, "Times New Roman", serif;
+      background: radial-gradient(
+        ellipse at 50% 45%,
+        #291052 0%,
+        #100822 38%,
+        #05030e 78%
+      );
+    }
+
+    #stars {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .nebula {
+      position: fixed;
+      width: 340px;
+      height: 340px;
+      border-radius: 50%;
+      filter: blur(100px);
+      opacity: .23;
+      pointer-events: none;
+      z-index: 0;
+      background: #a32bff;
+      animation: nebula 9s ease-in-out infinite alternate;
+    }
+
+    .nebula.one {
+      top: 5%;
+      left: -150px;
+    }
+
+    .nebula.two {
+      right: -150px;
+      bottom: 5%;
+      background: #ff4fa8;
+      animation-delay: -4s;
+    }
+
+    @keyframes nebula {
+      to {
+        transform: translate(40px, 35px) scale(1.2);
+      }
+    }
+
+    header {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 42px 18px 10px;
+    }
+
+    .eyebrow {
+      color: var(--rosa);
+      text-transform: uppercase;
+      letter-spacing: 5px;
+      font: 11px Arial, sans-serif;
+      margin-bottom: 17px;
+    }
+
+    h1 {
+      font-size: clamp(35px, 7vw, 70px);
+      font-weight: normal;
+      line-height: 1.12;
+      text-shadow: 0 0 25px #d45bff80;
+    }
+
+    h1 span {
+      color: var(--rosa);
+      font-style: italic;
+    }
+
+    .subtitle {
+      margin: 18px auto 0;
+      color: #d5c5ed;
+      line-height: 1.8;
+      max-width: 520px;
+      font-size: 15px;
+    }
+
+    .music-button {
+      position: relative;
+      z-index: 5;
+      display: block;
+      margin: 22px auto 8px;
+      border: 1px solid #e7a7ff88;
+      color: white;
+      background: #a64bd52c;
+      border-radius: 50px;
+      padding: 13px 23px;
+      cursor: pointer;
+      font: 13px Arial, sans-serif;
+      letter-spacing: 1px;
+      transition: .3s;
+    }
+
+    .music-button:hover {
+      background: #a64bd566;
+      box-shadow: 0 0 24px #c56cff55;
+      transform: scale(1.04);
+    }
+
+    .music-note {
+      text-align: center;
+      color: #b6a2d0;
+      font: 11px Arial, sans-serif;
+      margin-bottom: 12px;
+    }
+
+    .universe {
+      position: relative;
+      width: min(100%, 1050px);
+      height: 650px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    .orbit {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      border: 1px solid #d8b4ff20;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+    }
+
+    .orbit.one {
+      width: 390px;
+      height: 390px;
+    }
+
+    .orbit.two {
+      width: 560px;
+      height: 560px;
+    }
+
+    .orbit.three {
+      width: 740px;
+      height: 740px;
+      border-style: dashed;
+      opacity: .5;
+    }
+
+    .galaxy {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      width: 300px;
+      height: 300px;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        radial-gradient(circle at 50% 50%,
+          #fff9c9 0 2%, #ffe77a 3%, #c7a62c 5%,
+          #5c421b 9%, transparent 13%),
+        repeating-conic-gradient(from 8deg at 50% 50%,
+          #f8db5b00 0deg, #ffe66d55 8deg,
+          #fff1a5aa 13deg, #8f6b1f55 19deg,
+          #e5bc4a00 28deg),
+        radial-gradient(ellipse at center,
+          #fff4a9 0%, #cda63a 8%, #6c4d22 22%,
+          #1b1423 45%, transparent 70%);
+      box-shadow:
+        0 0 22px #ffe76b66,
+        0 0 65px #e4b63a45,
+        0 0 120px #b47cff25;
+      animation: galaxyPulse 5s ease-in-out infinite;
+      isolation: isolate;
+    }
+
+    .galaxy::before {
+      content: "";
+      position: absolute;
+      inset: -8%;
+      border-radius: 50%;
+      background: repeating-conic-gradient(
+        from 0deg,
+        #ffd95a00 0deg,
+        #ffd95a22 4deg,
+        #fff4b288 7deg,
+        #7d5b1d66 11deg,
+        #ffd95a00 17deg
+      );
+      filter: blur(2px);
+      mask-image: radial-gradient(
+        ellipse, transparent 0 14%, #000 18% 48%, transparent 69%
+      );
+      transform: rotate(-18deg) scaleY(.48);
+      animation: spinGalaxy 32s linear infinite;
+      z-index: -1;
+    }
+
+    .galaxy::after {
+      content: "";
+      position: absolute;
+      inset: 10%;
+      border-radius: 50%;
+      background: radial-gradient(
+        ellipse at 48% 50%,
+        #fff8c7 0 2%, #ffdf66 3%, #a77b29 7%,
+        #21172a 16%, transparent 32%
+      );
+      box-shadow: 0 0 18px #ffdc5d;
+      transform: rotate(-18deg) scaleY(.58);
+    }
+
+    .galaxy-content {
+      position: relative;
+      z-index: 2;
+      text-shadow: 0 2px 12px #1b092d;
+      background: #130b20b8;
+      border: 1px solid #ffe69b55;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(2px);
+    }
+
+    .galaxy .heart {
+      font-size: 25px;
+      filter: drop-shadow(0 0 12px #ff8ad8);
+    }
+
+    .galaxy h2 {
+      font-size: 14px;
+      font-weight: normal;
+      margin: 6px 0;
+    }
+
+    .galaxy p {
+      font: 7px Arial, sans-serif;
+      letter-spacing: 1px;
+      color: #f2d9ff;
+    }
+
+    @keyframes spinGalaxy {
+      to {
+        transform: rotate(342deg) scaleY(.48);
+      }
+    }
+
+    @keyframes galaxyPulse {
+      50% {
+        filter: brightness(1.2);
+        box-shadow:
+          0 0 35px #ffe76b88,
+          0 0 95px #e4b63a65,
+          0 0 130px #b47cff35;
+      }
+    }
+
+    .photo {
+      position: absolute;
+      width: 148px;
+      padding: 7px 7px 12px;
+      background: #fff8ff;
+      border-radius: 3px;
+      color: #32203a;
+      box-shadow: 0 5px 28px #0008, 0 0 18px #dc8cff18;
+      cursor: pointer;
+      transition: transform .35s, box-shadow .35s;
+      animation: float 5s ease-in-out infinite;
+      z-index: 3;
+    }
+
+    .photo:hover {
+      z-index: 10;
+      transform: scale(1.1) rotate(0deg) !important;
+      box-shadow: 0 0 35px #edb5ff70;
+    }
+
+    .photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 4.6;
+      object-fit: cover;
+      background: linear-gradient(135deg, #3b175c, #c17acb);
+    }
+
+    .photo .caption {
+      padding: 9px 3px 1px;
+      text-align: center;
+    }
+
+    .photo h3 {
+      font-size: 14px;
+      font-weight: normal;
+      margin-bottom: 5px;
+    }
+
+    .photo p {
+      font-size: 10px;
+      line-height: 1.5;
+      color: #765c7c;
+    }
+
+    @keyframes float {
+      0%, 100% { margin-top: 0; }
+      50% { margin-top: -10px; }
+    }
+
+    .p1 {
+      left: 5%;
+      top: 8%;
+      transform: rotate(-9deg);
+    }
+
+    .p2 {
+      right: 5%;
+      top: 7%;
+      transform: rotate(8deg);
+      animation-delay: -1s;
+    }
+
+    .p5 {
+      left: 13%;
+      bottom: 4%;
+      transform: rotate(-7deg);
+      animation-delay: -1.5s;
+    }
+
+    .p6 {
+      right: 13%;
+      bottom: 4%;
+      transform: rotate(7deg);
+      animation-delay: -2.5s;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 20;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: #080312ed;
+      backdrop-filter: blur(12px);
+    }
+
+    .modal.open {
+      display: flex;
+    }
+
+    .modal-inner {
+      width: min(420px, 100%);
+      text-align: center;
+      animation: appear .3s ease;
+    }
+
+    .modal img {
+      max-height: 65vh;
+      max-width: 100%;
+      border: 5px solid #fff6ff;
+      box-shadow: 0 0 45px #bb70ff55;
+      object-fit: contain;
+    }
+
+    .modal h2 {
+      color: var(--rosa);
+      font-weight: normal;
+      margin: 18px 0 8px;
+    }
+
+    .modal p {
+      line-height: 1.7;
+      color: #e6d8f5;
+    }
+
+    .close {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      border: 0;
+      background: none;
+      color: white;
+      font-size: 35px;
+      cursor: pointer;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: scale(.92); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .letter {
+      position: relative;
+      z-index: 2;
+      width: min(650px, calc(100% - 32px));
+      margin: 30px auto 70px;
+      padding: 30px 25px;
+      text-align: center;
+      border: 1px solid #d7a6ff35;
+      border-radius: 18px;
+      background: #170c2c88;
+      box-shadow: 0 0 50px #8e3bca12;
+    }
+
+    .letter h2 {
+      color: var(--rosa);
+      font-size: 26px;
+      font-weight: normal;
+      margin-bottom: 17px;
+    }
+
+    .letter p {
+      color: #e5d8f2;
+      line-height: 1.95;
+      font-size: 15px;
+    }
+
+    .signature {
+      display: block;
+      margin-top: 23px;
+      color: var(--rosa);
+      font-style: italic;
+      font-size: 20px;
+    }
+
+    footer {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+      text-align: center;
+      color: #9984b6;
+      font-size: 12px;
+    }
 
     .music-panel {
       position: relative;
@@ -65,12 +477,14 @@
       box-shadow: 0 0 25px #a64bd522;
       text-align: center;
     }
+
     .music-panel-title {
       color: #ffb5e2;
       font: 12px Arial, sans-serif;
       letter-spacing: 1px;
       margin-bottom: 10px;
     }
+
     .music-panel iframe {
       display: block;
       width: 100%;
@@ -79,6 +493,7 @@
       border-radius: 10px;
       background: #05030e;
     }
+
     .youtube-link {
       display: inline-block;
       margin-top: 11px;
@@ -88,55 +503,168 @@
       text-underline-offset: 3px;
     }
 
-    @media(max-width:650px){header{padding-top:35px}.subtitle{font-size:14px}.universe{height:auto;padding:20px 14px 35px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.orbit{display:none}.galaxy{position:relative;top:auto;left:auto;transform:none;width:min(240px,75vw);height:min(240px,75vw);grid-column:1/-1;justify-self:center;margin:10px 0 18px}.photo{position:relative;left:auto;right:auto;top:auto;bottom:auto;width:100%;margin:0!important;transform:none;animation-duration:6s}.photo img{aspect-ratio:4/4.8}.photo h3{font-size:13px}.photo p{font-size:11px}.letter{margin-top:10px}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important}}
+    @media (max-width: 650px) {
+      header {
+        padding-top: 35px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
+
+      .universe {
+        height: auto;
+        padding: 20px 14px 35px;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .orbit {
+        display: none;
+      }
+
+      .galaxy {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+        width: min(240px, 75vw);
+        height: min(240px, 75vw);
+        grid-column: 1 / -1;
+        justify-self: center;
+        margin: 10px 0 18px;
+      }
+
+      .photo {
+        position: relative;
+        left: auto;
+        right: auto;
+        top: auto;
+        bottom: auto;
+        width: 100%;
+        margin: 0 !important;
+        transform: none;
+        animation-duration: 6s;
+      }
+
+      .photo img {
+        aspect-ratio: 4 / 4.8;
+      }
+
+      .photo h3 {
+        font-size: 13px;
+      }
+
+      .photo p {
+        font-size: 11px;
+      }
+
+      .letter {
+        margin-top: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+      }
+    }
   </style>
 </head>
+
 <body>
-  <canvas id="stars" width="1366" height="639" style="width: 1366px; height: 639px;"></canvas>
-  <div class="nebula one"></div><div class="nebula two"></div>
+  <canvas id="stars"></canvas>
+  <div class="nebula one"></div>
+  <div class="nebula two"></div>
 
   <header>
     <p class="eyebrow">Un universo creado para ti ✦</p>
     <h1>Mi galaxia<br><span>eres tú</span> ❤️</h1>
-    <p class="subtitle">Entre miles de millones de estrellas, mi corazón siempre encontraría el camino hacia ti.</p>
-    <button class="music-button" id="musicButton">♫ Reproducir / volver a cargar canción</button>
-    <p class="music-note" id="musicNote">LEE HI — ONLY · Si no comienza, pulsa Play dentro del reproductor.</p>
+    <p class="subtitle">
+      Entre miles de millones de estrellas, mi corazón siempre
+      encontraría el camino hacia ti.
+    </p>
+
+    <button class="music-button" id="musicButton">
+      ♫ Reproducir / volver a cargar canción
+    </button>
+    <p class="music-note" id="musicNote">
+      LEE HI — ONLY · Si no comienza, pulsa Play dentro del reproductor.
+    </p>
   </header>
 
   <main>
     <section class="universe" aria-label="Mi galaxia de recuerdos">
-      <div class="orbit one"></div><div class="orbit two"></div><div class="orbit three"></div>
-      <div class="galaxy"><div class="galaxy-content"><div class="heart">♥</div><h2>Mi persona favorita</h2><p>EN TODO EL UNIVERSO</p></div></div>
+      <div class="orbit one"></div>
+      <div class="orbit two"></div>
+      <div class="orbit three"></div>
 
-      <article class="photo p1" data-title="Tu sonrisa" data-text="Tu sonrisa tiene esa magia de convertir cualquier día en uno bonito.">
-        <img src="./Mi universo eres tú ❤️_files/foto1.jpg" alt="La sonrisa de mi novia"><div class="caption"><h3>Tu sonrisa ✨</h3><p>Mi luz en los días grises.</p></div>
+      <div class="galaxy">
+        <div class="galaxy-content">
+          <div class="heart">♥</div>
+          <h2>Mi persona favorita</h2>
+          <p>EN TODO EL UNIVERSO</p>
+        </div>
+      </div>
+
+      <!-- Las fotos se cargan desde la raíz del repositorio -->
+      <article class="photo p1"
+        data-title="Tu sonrisa"
+        data-text="Tu sonrisa tiene esa magia de convertir cualquier día en uno bonito.">
+        <img src="./foto1.jpg" alt="La sonrisa de mi novia" loading="eager">
+        <div class="caption">
+          <h3>Tu sonrisa ✨</h3>
+          <p>Mi luz en los días grises.</p>
+        </div>
       </article>
-      <article class="photo p2" data-title="Tus ojitos" data-text="Podría mirar tus ojos mil veces y encontrar algo nuevo y hermoso en ellos.">
-        <img src="./Mi universo eres tú ❤️_files/foto2.jpg" alt="Los ojos de mi novia"><div class="caption"><h3>Tus ojitos 🌙</h3><p>Mi lugar favorito.</p></div>
+
+      <article class="photo p2"
+        data-title="Tus ojitos"
+        data-text="Podría mirar tus ojos mil veces y encontrar algo nuevo y hermoso en ellos.">
+        <img src="./foto2.jpg" alt="Los ojos de mi novia" loading="eager">
+        <div class="caption">
+          <h3>Tus ojitos 🌙</h3>
+          <p>Mi lugar favorito.</p>
+        </div>
       </article>
-      <article class="photo p5" data-title="Tu belleza" data-text="Eres hermosa sin intentarlo, incluso en esos pequeños momentos que tú no notas.">
-        <img src="./Mi universo eres tú ❤️_files/foto3.jpg" alt="Una foto hermosa de mi novia"><div class="caption"><h3>Tu belleza 🌷</h3><p>Hermosa sin darte cuenta.</p></div>
+
+      <article class="photo p5"
+        data-title="Tu belleza"
+        data-text="Eres hermosa sin intentarlo, incluso en esos pequeños momentos que tú no notas.">
+        <img src="./foto3.jpg" alt="Una foto hermosa de mi novia" loading="eager">
+        <div class="caption">
+          <h3>Tu belleza 🌷</h3>
+          <p>Hermosa sin darte cuenta.</p>
+        </div>
       </article>
-      <article class="photo p6" data-title="Tu ternura" data-text="Tu forma de ser hace que mi mundo se sienta más tranquilo, cálido y bonito.">
-        <img src="./Mi universo eres tú ❤️_files/foto4.jpg" alt="Un recuerdo de mi novia"><div class="caption"><h3>Tu ternura 🪐</h3><p>Mi paz en este universo.</p></div>
+
+      <article class="photo p6"
+        data-title="Tu ternura"
+        data-text="Tu forma de ser hace que mi mundo se sienta más tranquilo, cálido y bonito.">
+        <img src="./foto4.jpg" alt="Un recuerdo de mi novia" loading="eager">
+        <div class="caption">
+          <h3>Tu ternura 🪐</h3>
+          <p>Mi paz en este universo.</p>
+        </div>
       </article>
-      
-      
-      
-      
     </section>
 
     <section class="letter">
       <h2>Una carta desde mi universo 💌</h2>
       <p>
         Amor, hice este pequeño universo para recordarte lo especial que eres para mí.
-        Si pudiera guardar todas las cosas bonitas que veo en ti, necesitaría un cielo entero lleno de estrellas.
+        Si pudiera guardar todas las cosas bonitas que veo en ti, necesitaría un cielo
+        entero lleno de estrellas.
         <br><br>
-        Cada foto guarda un pedacito de ti, y cada pedacito me recuerda lo afortunado que me siento de tenerte en mi vida.
+        Cada foto guarda un pedacito de ti, y cada pedacito me recuerda lo afortunado
+        que me siento de tenerte en mi vida.
         <br><br>
-        No sé cuántas estrellas existen allá afuera, pero sí sé que, entre todas las personas de este mundo,
-        hay alguien que hace latir mi corazón de una manera única: tú.
+        No sé cuántas estrellas existen allá afuera, pero sí sé que, entre todas las
+        personas de este mundo, hay alguien que hace latir mi corazón de una manera
+        única: tú.
         <br><br>
         Y si alguna vez te olvidas de lo hermosa que eres, vuelve a este pequeño universo.
         Aquí siempre encontrarás una razón para recordarlo.
@@ -146,124 +674,148 @@
   </main>
 
   <footer>Hecho con amor, pensando solamente en ti. ✦</footer>
+
   <section class="music-panel" aria-label="Reproductor de música">
     <p class="music-panel-title">♫ Nuestra canción · LEE HI — ONLY</p>
-    <iframe id="youtubePlayer" title="LEE HI - ONLY" src="./Mi universo eres tú ❤️_files/KmOVNVZEP9o.html" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen="">
+
+    <iframe
+      id="youtubePlayer"
+      title="LEE HI - ONLY"
+      src="https://www.youtube-nocookie.com/embed/KmOVNVZEP9o?playsinline=1&rel=0"
+      allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen>
     </iframe>
-    <a class="youtube-link" href="https://www.youtube.com/watch?v=KmOVNVZEP9o" target="_blank" rel="noopener noreferrer">Abrir canción directamente en YouTube ↗</a>
+
+    <a class="youtube-link"
+      href="https://www.youtube.com/watch?v=KmOVNVZEP9o"
+      target="_blank"
+      rel="noopener noreferrer">
+      Abrir canción directamente en YouTube ↗
+    </a>
   </section>
 
-
-  <div class="modal" id="photoModal" role="dialog" aria-modal="true" aria-label="Fotografía ampliada">
+  <div class="modal" id="photoModal"
+    role="dialog" aria-modal="true" aria-label="Fotografía ampliada">
     <button class="close" id="closeModal" aria-label="Cerrar">×</button>
-    <div class="modal-inner"><img id="modalImage" src="http://127.0.0.1:5500/index.html" alt=""><h2 id="modalTitle"></h2><p id="modalText"></p></div>
+    <div class="modal-inner">
+      <img id="modalImage" src="" alt="">
+      <h2 id="modalTitle"></h2>
+      <p id="modalText"></p>
+    </div>
   </div>
 
   <script>
     // Estrellas animadas
     const canvas = document.getElementById("stars");
     const ctx = canvas.getContext("2d");
-    let stars = [], width, height;
+    let stars = [];
+    let width = 0;
+    let height = 0;
 
     function resizeStars() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
-      width = window.innerWidth; height = window.innerHeight;
-      canvas.width = width * dpr; canvas.height = height * dpr;
-      canvas.style.width = width + "px"; canvas.style.height = height + "px";
+
+      width = window.innerWidth;
+      height = window.innerHeight;
+
+      canvas.width = width * dpr;
+      canvas.height = height * dpr;
+      canvas.style.width = width + "px";
+      canvas.style.height = height + "px";
+
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      stars = Array.from({length: Math.min(180, Math.floor(width * height / 6500))}, () => ({
-        x: Math.random() * width, y: Math.random() * height,
-        r: Math.random() * 1.5 + .3, a: Math.random(), speed: Math.random() * .012 + .003
+
+      stars = Array.from({
+        length: Math.min(180, Math.floor(width * height / 6500))
+      }, () => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        r: Math.random() * 1.5 + .3,
+        a: Math.random(),
+        speed: Math.random() * .012 + .003
       }));
     }
 
     function drawStars() {
       ctx.clearRect(0, 0, width, height);
+
       for (const s of stars) {
         s.a += s.speed;
         const opacity = .25 + (Math.sin(s.a) + 1) * .35;
-        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(255,226,255,${opacity})`; ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(255,226,255,${opacity})`;
+        ctx.fill();
       }
+
       requestAnimationFrame(drawStars);
     }
-    window.addEventListener("resize", resizeStars);
-    resizeStars(); drawStars();
 
-    // YouTube requiere una interacción del usuario para iniciar audio en muchos navegadores.
-    // El reproductor queda visible en una esquina para comprobar que la canción carga.
+    window.addEventListener("resize", resizeStars);
+    resizeStars();
+    drawStars();
+
+    // Música de YouTube: se carga tras pulsar el botón
     const player = document.getElementById("youtubePlayer");
     const musicButton = document.getElementById("musicButton");
     const musicNote = document.getElementById("musicNote");
-    const songUrl = "https://www.youtube.com/embed/KmOVNVZEP9o?autoplay=1&loop=1&playlist=KmOVNVZEP9o&playsinline=1&rel=0";
-    let musicStarted = false;
+
+    const songUrl =
+      "https://www.youtube-nocookie.com/embed/KmOVNVZEP9o" +
+      "?autoplay=1&playsinline=1&rel=0";
 
     musicButton.addEventListener("click", () => {
       player.src = songUrl;
-      musicStarted = true;
-      musicButton.textContent = "♫ Reproducir / volver a cargar canción";
-      musicNote.textContent = "LEE HI — ONLY · Si no comienza, pulsa Play dentro del reproductor.";
+      musicNote.textContent =
+        "LEE HI — ONLY · Si no suena, pulsa Play en el reproductor.";
     });
 
-    // Ampliar fotografías
+    // Abrir fotos ampliadas al hacer clic
     const modal = document.getElementById("photoModal");
     const modalImage = document.getElementById("modalImage");
     const modalTitle = document.getElementById("modalTitle");
     const modalText = document.getElementById("modalText");
 
     document.querySelectorAll(".photo").forEach(photo => {
+      const image = photo.querySelector("img");
+
+      // Avisar si una fotografía no se encuentra
+      image.addEventListener("error", () => {
+        image.alt = "No se encontró " + image.getAttribute("src");
+        image.style.objectFit = "contain";
+        console.error("No se pudo cargar la imagen:", image.src);
+      });
+
       photo.addEventListener("click", () => {
-        const image = photo.querySelector("img");
-        modalImage.src = image.src; modalImage.alt = image.alt;
+        modalImage.src = image.src;
+        modalImage.alt = image.alt;
         modalTitle.textContent = photo.dataset.title;
         modalText.textContent = photo.dataset.text;
         modal.classList.add("open");
       });
     });
 
-    function closePhoto() { modal.classList.remove("open"); modalImage.src = ""; }
-    document.getElementById("closeModal").addEventListener("click", closePhoto);
-    modal.addEventListener("click", e => { if (e.target === modal) closePhoto(); });
-    document.addEventListener("keydown", e => { if (e.key === "Escape") closePhoto(); });
+    function closePhoto() {
+      modal.classList.remove("open");
+      modalImage.src = "";
+    }
+
+    document.getElementById("closeModal")
+      .addEventListener("click", closePhoto);
+
+    modal.addEventListener("click", event => {
+      if (event.target === modal) {
+        closePhoto();
+      }
+    });
+
+    document.addEventListener("keydown", event => {
+      if (event.key === "Escape") {
+        closePhoto();
+      }
+    });
   </script>
-<!-- Code injected by live-server -->
-<script>
-	// <![CDATA[  <-- For SVG support
-	if ('WebSocket' in window) {
-		(function () {
-			function refreshCSS() {
-				var sheets = [].slice.call(document.getElementsByTagName("link"));
-				var head = document.getElementsByTagName("head")[0];
-				for (var i = 0; i < sheets.length; ++i) {
-					var elem = sheets[i];
-					var parent = elem.parentElement || head;
-					parent.removeChild(elem);
-					var rel = elem.rel;
-					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
-						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
-						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
-					}
-					parent.appendChild(elem);
-				}
-			}
-			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
-			var address = protocol + window.location.host + window.location.pathname + '/ws';
-			var socket = new WebSocket(address);
-			socket.onmessage = function (msg) {
-				if (msg.data == 'reload') window.location.reload();
-				else if (msg.data == 'refreshcss') refreshCSS();
-			};
-			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
-				console.log('Live reload enabled.');
-				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
-			}
-		})();
-	}
-	else {
-		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
-	}
-	// ]]>
-</script>
-
-
-</body></html>
+</body>
+</html>
